@@ -1,0 +1,34 @@
+/*bozza ancora molto in corsa d'opera*/
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-family: 'Outfit', sans-serif;
+    font-size:1.2em;
+    color:#000000;
+    background-color:#edecec;
+    /*eventualmente aggiungere width, margin, position*/
+}
+
+h1
+{
+    font-size:5.0em;
+    text-transform: capitalize;
+}
+
+p.description
+{
+    font-family: 'Roboto', sans-serif;
+    font-weight:600;
+    line-height: 25px;
+}
+
+p.info
+{
+    line-height: 30px;
+}
