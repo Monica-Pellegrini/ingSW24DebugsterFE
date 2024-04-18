@@ -8,27 +8,93 @@
 
 body
 {
-    font-family: 'Outfit', sans-serif;
-    font-size:1.2em;
-    color:#000000;
-    background-color:#edecec;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    color: #000000;
+    background-color: #edecec;
     /*eventualmente aggiungere width, margin, position*/
 }
 
 h1
 {
-    font-size:5.0em;
+    font-family: 'Outfit', sans-serif;
+    font-size: 5.0em;
     text-transform: capitalize;
 }
+
+h2
+{
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+
 
 p.description
 {
     font-family: 'Roboto', sans-serif;
-    font-weight:600;
+    font-weight: 600;
     line-height: 25px;
 }
 
 p.info
 {
+    font-family: 'Outfit', sans-serif;
     line-height: 30px;
 }
+
+a.button
+{
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+    /*margin: 5px 2px;*/
+}
+
+a.button:hover
+{
+    color: #797575;
+}
+
+a.buttondx
+{
+    font-size: 1.5em;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header
+{
+    background: #E78C39;
+    height: 60px;
+}
+
+ul li
+{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff;
+    display: inline;
+    border-radius:50px;
+    padding: 3px 20px 3px 20px;
+
+}
+
+ul li:hover
+{
+    text-decoration:none;
+    background-color: #ffffff;
+}
+
+/*banneer???*/
+
+
+
+/*
+link
+immagini
+ul e li e ol
+ */
