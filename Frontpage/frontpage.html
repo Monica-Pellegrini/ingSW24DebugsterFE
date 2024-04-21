@@ -8,22 +8,30 @@
 <body>
 <!--Inizio Header-->
 <header>
-    <!--Form per la ricerca-->
-    <form name="searchForm" method="get">
-        <!--Immagine per il submit, va a sinistra del textbox-->
-        <label></label>
-        <input type="image" id="submit" src="lente.png" alt="Clicca qui per per cercare">
-        <!--Textbox per ricerca-->
-        <label></label>
-        <input type="text" id="search" name="search" value="" maxlength="50" required placeholder="Cerca . . ." size="50"/>
-    </form>
-
-    <!--Link a bottone-->
-    <!--Mettili detro ad <ul> che a sua volta contine dei <li> per vedere il css -M.P. -->
-    <a id="btnFiltri" class="button" href="filtri.html">Filtri</a>
-    <!--Filtri è vicino al textbox, gli altri sono raggruppati a sinistra-->
-    <a id="btn_Iscriviti" class="button" href="iscriviti.html">Iscriviti</a>
-    <a id="btn_Accedi" class="button" href="accedi.html">Accedi</a>
+    <nav>
+        <ul class="nav">
+            <li class="searchbar clearfix">
+                <!--Form per la ricerca-->
+                <form name="searchForm" method="get">
+                    <!--Immagine per il submit, va a sinistra del textbox-->
+                    <label></label>
+                    <input type="image" id="submit" src="lente.png" alt="Clicca qui per per cercare">
+                    <!--Textbox per ricerca-->
+                    <label></label>
+                    <input type="text" id="search" name="search" value="" maxlength="50" required placeholder="Cerca . . ." size="50"/>
+                </form>
+            </li>
+            <li class="items">
+                <!--Link a bottone-->
+                <ul class="itemlist">
+                    <li><a id="btnFiltri" class="button" href="filtri.html">Filtri</a></li>
+                    <!--Filtri è vicino al textbox, gli altri sono raggruppati a sinistra-->
+                    <li><a id="btn_Iscriviti" class="button" href="iscriviti.html">Iscriviti</a></li>
+                    <li><a id="btn_Accedi"  class="button" href="accedi.html">Accedi</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 </header>
 <!--Fine Header-->
 <!--Inizio Main-->
