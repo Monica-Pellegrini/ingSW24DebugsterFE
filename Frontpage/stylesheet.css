@@ -53,7 +53,7 @@ a.button
     /*margin: 5px 2px;*/
 }
 
-a.button:hover
+li:hover a.button
 {
     color: #797575;
 }
@@ -72,7 +72,9 @@ header
     height: 60px;
 }
 
-ul li
+
+
+ul.itemlist li
 {
     border-style: solid;
     border-width: 2px;
@@ -80,14 +82,15 @@ ul li
     display: inline;
     border-radius:50px;
     padding: 3px 20px 3px 20px;
-
+    float: left;
 }
 
-ul li:hover
+nav ul.itemlist li:hover
 {
     text-decoration:none;
     background-color: #ffffff;
 }
+
 
 /*banneer???*/
 
