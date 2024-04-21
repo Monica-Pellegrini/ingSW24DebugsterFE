@@ -12,9 +12,13 @@ body
     font-size: 1.2em;
     color: #000000;
     background-color: #edecec;
+    /*width:70em;
+    margin:0 auto;*/
+    position: relative;
     /*eventualmente aggiungere width, margin, position*/
 }
 
+/*fromattazione di font e vari*/
 h1
 {
     font-family: 'Outfit', sans-serif;
@@ -29,8 +33,6 @@ h2
     font-weight: bold;
 }
 
-
-
 p.description
 {
     font-family: 'Roboto', sans-serif;
@@ -44,6 +46,23 @@ p.info
     line-height: 30px;
 }
 
+main
+{
+    width: 880px;
+}
+
+/*formattazione dell'header*/
+header
+{
+    background: #E78C39;
+    height: 70px;
+}
+
+ul, li
+{
+    list-style: none;
+}
+
 a.button
 {
     text-transform: capitalize;
@@ -51,11 +70,6 @@ a.button
     font-weight: 600;
     color: #ffffff;
     /*margin: 5px 2px;*/
-}
-
-li:hover a.button
-{
-    color: #797575;
 }
 
 a.buttondx
@@ -66,26 +80,56 @@ a.buttondx
     font-weight: 600;
 }
 
-header
+input
 {
-    background: #E78C39;
-    height: 60px;
+    border-style: hidden;
+    border-radius:50px;
+    padding: 10px 20px 10px 20px;
+}
+
+li:hover a.button
+{
+    color: #797575;
+}
+
+ul.filtri, li.searchbar
+{
+    float: left;
+}
+
+ul.itemlist
+{
+    float: right;
+}
+
+li.searchbar
+{
+    padding: 16px 0 16px 20px;
+}
+
+ul.filtri
+{
+    padding: 18px 6px 16px 12px;
+}
+
+/*per fare i bottoni come su figma separa itemlist in due ul e sistema il padding di entrambi*/
+ul.itemlist
+{
+    padding: 18px 20px 16px 0;
 }
 
 
-
-ul.itemlist li
+ul.filtri li, ul.itemlist li
 {
     border-style: solid;
     border-width: 2px;
     border-color: #ffffff;
-    display: inline;
+    display: inline-block;
     border-radius:50px;
-    padding: 3px 20px 3px 20px;
-    float: left;
+    padding: 4px 20px 4px 20px;
 }
 
-nav ul.itemlist li:hover
+nav ul.filtri li:hover, nav ul.itemlist li:hover
 {
     text-decoration:none;
     background-color: #ffffff;
