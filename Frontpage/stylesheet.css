@@ -18,6 +18,7 @@ body
     /*eventualmente aggiungere width, margin, position*/
 }
 
+
 /*fromattazione di font e vari*/
 h1
 {
@@ -46,16 +47,12 @@ p.info
     line-height: 30px;
 }
 
-main
-{
-    width: 880px;
-}
 
 /*formattazione dell'header*/
 header
 {
     background: #E78C39;
-    height: 70px;
+    height: 3.6em;
 }
 
 ul, li
@@ -136,12 +133,86 @@ nav ul.filtri li:hover, nav ul.itemlist li:hover
 }
 
 
-/*banneer???*/
+/*formattazione del main*/
+main
+{
+    width: 71em;
+    margin: auto;
+}
+
+/*formattazione dei banner*/
+#box_banner
+{
+    width: 72em;
+    height: 30em;
+    background-image: linear-gradient(to bottom, #F4E7DB 0%, #bbb9b7 100%);;
+    text-align: center;
+    margin: 70px auto;
+}
+
+#banner
+{
+    background: transparent no-repeat;
+    height: 30em;
+    max-width: 72em;
+}
+
+#box_imm2
+{
+    width: 36em;
+    height: 30em;
+    background-image: linear-gradient(to bottom, #F4E7DB 0%, #bbb9b7 100%);;
+    text-align: center;
+    margin: 50px 0 0 0;
+}
+
+#imm2
+{
+    background: transparent no-repeat;
+    height: 30em;
+    max-width:36em;
+}
+/*fine formattazione del banner*/
+
+#segnala
+{
+    text-decoration: none;
+    font-weight: 600;
+    color: #3147BB;
+    margin: 0 242px 0 239px; /*forse con l'aside cambia*/
+}
 
 
+/*formattazione del footer*/
+footer
+{
+    width: 100%;
+    background: #E78C39;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    height: 8em;
+}
 
-/*
-link
-immagini
-ul e li e ol
- */
+footer a
+{
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+footer a:hover
+{
+    opacity: 1;
+}
+
+ul.prima_colonna, ul.seconda_colonna, ul.terza_colonna
+{
+    display: inline-block;
+    margin-top: 1.6em;
+    margin-left: 13em;
+}
+
+nav.footer-nav li
+{
+    margin-bottom:0.8em;
+}
