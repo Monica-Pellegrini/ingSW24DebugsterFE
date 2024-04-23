@@ -34,6 +34,14 @@ h2
     font-weight: bold;
 }
 
+#prezzo
+{
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-top: 0.7em;
+    margin-bottom:0.7em;
+}
+
 p.description
 {
     font-family: 'Roboto', sans-serif;
@@ -47,12 +55,34 @@ p.info
     line-height: 30px;
 }
 
+a
+{
+    color: #3D59E9;
+}
+
 
 /*formattazione dell'header*/
 header
 {
     background: #E78C39;
     height: 3.6em;
+}
+
+form
+{
+    display: flex;
+    align-items: center;
+}
+
+#submit
+{
+    max-width: 2em;
+    max-height: 2em;
+}
+
+li.searchbar
+{
+    padding: 0.52em 0 0.5em 1.05em;
 }
 
 ul, li
@@ -69,13 +99,6 @@ a.button
     /*margin: 5px 2px;*/
 }
 
-a.buttondx
-{
-    font-size: 1.5em;
-    text-transform: capitalize;
-    text-decoration: none;
-    font-weight: 600;
-}
 
 input
 {
@@ -99,10 +122,6 @@ ul.itemlist
     float: right;
 }
 
-li.searchbar
-{
-    padding: 16px 0 16px 20px;
-}
 
 ul.filtri
 {
@@ -136,11 +155,19 @@ nav ul.filtri li:hover, nav ul.itemlist li:hover
 /*formattazione del main*/
 main
 {
-    width: 71em;
+    position: relative;
+    width: 72em;
     margin: auto;
 }
 
 /*formattazione dei banner*/
+#colonna_sx
+{
+    width:36em;
+    text-align: left;
+    float: left;
+}
+
 #box_banner
 {
     width: 72em;
@@ -157,6 +184,7 @@ main
     max-width: 72em;
 }
 
+/*formattazzione colonna di sinistra*/
 #box_imm2
 {
     width: 36em;
@@ -172,32 +200,137 @@ main
     height: 30em;
     max-width:36em;
 }
-/*fine formattazione del banner*/
+
 
 #segnala
 {
     text-decoration: none;
     font-weight: 600;
-    color: #3147BB;
-    margin: 0 242px 0 239px; /*forse con l'aside cambia*/
+    margin: 0 0 0 239px; /*forse con l'aside cambia*/
 }
 
+/*formattazione colonna di destra*/
+aside
+{
+    width: 36em;
+    float: right;
+    text-align: right;
+}
+
+#box_bigl
+{
+    float: right;
+    text-align: center;
+    border: solid 3px #E78C39;
+    background-color: #FFF7EB;
+    border-radius: 20px;
+    width: 16.7em;
+    margin-top: 0.3em;
+    margin-bottom: 0.8em;
+}
+
+#btn_biglietteria
+{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #B56113;
+    border-radius: 25px;
+    background-color: #E78C39;
+    display: inline-block;
+    padding: 1em 2em 1em 2em;
+    margin-bottom: 1em;
+}
+
+#btn_biglietteria a
+{
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+#nav_dx
+{
+    clear: both;
+    float:right;
+    text-align: center;
+}
+
+ul.link_dx li
+{
+    border-style: solid;
+    border-width: 3px;
+    border-color: #E78C39;
+    background-color: #FFE0C3;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 0.2em 0.4em 0.2em 0.4em;
+    margin-bottom: 1em;
+}
+
+ul.link_dx li.chat_live
+{
+    margin-left:0.5em;
+    padding: 0.2em 0.83em 0.2em 0.83em;
+}
+
+a.buttondx, p.buttondx
+{
+    font-size: 1.5em;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#btn_recensioni
+{
+    border-style: solid;
+    border-width: 3px;
+    border-color: #E78C39;
+    background-color: #FFE0C3;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 0.2em 4.31em 0.2em 4.31em;
+}
+
+#torna_su
+{
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: solid 3px #E78C39;
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 2em;
+    height: 2em;
+}
+
+#freccia
+{
+    padding: 0.25em;
+    max-width: 2em;
+    max-height: 1.5em;
+}
 
 /*formattazione del footer*/
 footer
 {
+    text-align: center;
     width: 100%;
     background: #E78C39;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     height: 8em;
+    margin-top:2.5em;
 }
 
 footer a
 {
     text-decoration: none;
     color: #ffffff;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 footer a:hover
@@ -209,10 +342,22 @@ ul.prima_colonna, ul.seconda_colonna, ul.terza_colonna
 {
     display: inline-block;
     margin-top: 1.6em;
-    margin-left: 13em;
+}
+
+ul.prima_colonna, ul.seconda_colonna
+{
+    margin-right: 13em;
 }
 
 nav.footer-nav li
 {
     margin-bottom:0.8em;
+}
+
+.clearfix:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
