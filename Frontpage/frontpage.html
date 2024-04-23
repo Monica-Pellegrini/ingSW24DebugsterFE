@@ -15,7 +15,7 @@
                 <form name="searchForm" method="get">
                     <!--Immagine per il submit, va a sinistra del textbox-->
                     <label></label>
-                    <input type="image" id="submit" src="lente.png" alt="Clicca qui per per cercare">
+                    <input type="image" id="submit" src="images/lente.png" alt="Clicca qui per per cercare">
                     <!--Textbox per ricerca-->
                     <label></label>
                     <input type="text" id="search" name="search" value="" maxlength="50" required placeholder="Cerca . . ." size="50"/>
@@ -47,24 +47,30 @@
     <div id="colonna_sx">
         <h1>Nome evento</h1>
         <p id="descrizione" class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
+        <br>
+        <br>
         <h2>Data e ora</h2>
         <p id="data" class="description">Lun, 1 Gen 2024 09:00 - 13:00 CET</p>
-
+        <br>
+        <br>
         <h2>Location</h2>
         <a id="location" class="description" href="mappa.html">Via Giuseppe Saragat, 1, 44124 Ferrara FE</a>
-
+        <br>
+        <br>
+        <br>
         <h2>Organizzato da</h2>
         <a id="organizzatore" class="description" href="profilo_org.html">Dr Nerina Ramlakhan</a>
-
+        <br>
+        <br>
+        <br>
         <h2>Infromazioni sull'evento</h2>
         <p id="info" class="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
         <!--Immagine secondaria-->
         <div id="box_imm2">
-            <img id="imm2" src="imm2.jpg" alt="Immagine secondaria">
+            <img id="imm2" src="images/imm2.jpg" alt="Immagine secondaria">
         </div>
-
+        <br>
         <a id="segnala" href="segnala.html">Segnala questo evento</a>
 
     </div>
@@ -91,7 +97,7 @@
     </div>
     
     <!--Link a inizio pagina-->
-    <a href="header"><img src="freccia.jpg" alt="Clicca qui per tornare in cima alla pagina"></a>
+    <a href="header"><img src="images/freccia.jpg" alt="Clicca qui per tornare in cima alla pagina"></a>
 
 </main>
 <!--Fine Main-->
@@ -99,17 +105,25 @@
 <footer>
     <!--Link da raggruppare in 3 gruppi da 3-->
     <!--Prima colonna-->
-    <a href="home.html">Home Page</a>
-    <a href="faq.html">FAQs</a>
-    <a href="sponsor.html">Sponsorizzazioni</a>
-    <!--Seconda colonna-->
-    <a href="user_sup.html">Supporto utente</a>
-    <a href="tec_sup.html">Supporto tecnico</a>
-    <a href="segnala.html">Segnala questo evento</a>
-    <!--Terza colonna-->
-    <a href="privacy.html">Privacy</a>
-    <a href="cookies.html">Cookies</a>
-    <a href="terms.html">Termini di utilizzo</a>
+    <nav class="footer-nav">
+        <ul class="prima_colonna">
+            <li><a href="home.html">Home Page</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="sponsor.html">Sponsorizzazioni</a></li>
+        </ul>
+        <!--Seconda colonna-->
+        <ul class="seconda_colonna">
+            <li><a href="user_sup.html">Supporto utente</a></li>
+            <li><a href="tec_sup.html">Supporto tecnico</a></li>
+            <li><a href="segnala.html">Segnala questo evento</a></li>
+        </ul>
+        <!--Terza colonna-->
+        <ul class="terza_colonna">
+            <li><a href="privacy.html">Privacy</a></li>
+            <li> <a href="cookies.html">Cookies</a></li>
+            <li><a href="terms.html">Termini di utilizzo</a></li>
+        </ul>
+    </nav>
 </footer>
 <!--Fine Footer-->
 </body>
