@@ -107,10 +107,6 @@ input
     padding: 10px 20px 10px 20px;
 }
 
-li:hover a.button
-{
-    color: #797575;
-}
 
 ul.filtri, li.searchbar
 {
@@ -134,8 +130,12 @@ ul.itemlist
     padding: 18px 20px 16px 0;
 }
 
-
 ul.filtri li, ul.itemlist li
+{
+    display: inline-block;
+}
+
+ul.filtri a, ul.itemlist a
 {
     border-style: solid;
     border-width: 2px;
@@ -145,12 +145,12 @@ ul.filtri li, ul.itemlist li
     padding: 4px 20px 4px 20px;
 }
 
-nav ul.filtri li:hover, nav ul.itemlist li:hover
+ul.filtri a:hover, ul.itemlist a:hover
 {
     text-decoration:none;
     background-color: #ffffff;
+    color: #797575;
 }
-
 
 /*formattazione del main*/
 main
