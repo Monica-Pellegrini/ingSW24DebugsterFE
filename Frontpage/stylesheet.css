@@ -231,14 +231,9 @@ aside
 
 #btn_biglietteria
 {
-    border-style: solid;
-    border-width: 2px;
-    border-color: #B56113;
-    border-radius: 25px;
-    background-color: #E78C39;
     display: inline-block;
-    padding: 1em 2em 1em 2em;
     margin-bottom: 1em;
+
 }
 
 #btn_biglietteria a
@@ -248,6 +243,19 @@ aside
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
     font-size: 1.5em;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #B56113;
+    border-radius: 25px;
+    background-color: #E78C39;
+    display: inline-block;
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+#btn_biglietteria a:active
+{
+    color: #dadada;
+    background-color: #B56113;
 }
 
 #nav_dx
@@ -259,20 +267,30 @@ aside
 
 ul.link_dx li
 {
+    display: inline-block;
+    margin-bottom: 1em;
+}
+
+ul.link_dx a, ul.link_dx p
+{
     border-style: solid;
     border-width: 3px;
     border-color: #E78C39;
     background-color: #FFE0C3;
-    display: inline-block;
     border-radius: 15px;
     padding: 0.2em 0.4em 0.2em 0.4em;
-    margin-bottom: 1em;
 }
 
-ul.link_dx li.chat_live
+ul.link_dx li.chat_live {
+    margin-left: 0.7em;
+    margin-right: 0.06em;
+
+}
+
+#nav_dx a:active
 {
-    margin-left:0.5em;
-    padding: 0.2em 0.83em 0.2em 0.83em;
+    color: #3047b7;
+    background-color: #E78C39;
 }
 
 a.buttondx, p.buttondx
@@ -285,13 +303,19 @@ a.buttondx, p.buttondx
 
 #btn_recensioni
 {
+    display: inline-block;
+}
+
+#btn_recensioni a
+{
     border-style: solid;
     border-width: 3px;
     border-color: #E78C39;
     background-color: #FFE0C3;
     display: inline-block;
     border-radius: 15px;
-    padding: 0.2em 4.31em 0.2em 4.31em;
+    padding: 0.2em 2.899em 0.2em 2.899em;
+    margin-right: 0.03em;
 }
 
 #torna_su
@@ -330,7 +354,7 @@ footer a
 {
     text-decoration: none;
     color: #ffffff;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 footer a:hover
