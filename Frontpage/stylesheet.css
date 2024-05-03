@@ -318,6 +318,11 @@ a.buttondx, p.buttondx
     margin-right: 0.03em;
 }
 
+a:hover
+{
+    color: #2a39b2;
+}
+
 #torna_su
 {
     text-align: center;
