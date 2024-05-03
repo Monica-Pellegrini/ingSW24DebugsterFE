@@ -1,8 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+// PULSANTI SONDAGGI
+
+<li id="btn_sondaggiPre"><a class="buttondx" href="http://localhost:8080/api/sondaggioPre">Sondaggio pre-evento</a></li>
+<li id="btn_sondaggiPost"><a class="buttondx" href="http://localhost:8080/api/sondaggioPost">Sondaggio post-evento</a></li>
+
+// VIDEOPLAYER
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Video Player</title>
 </head>
 
@@ -10,7 +13,6 @@
 
 <h1>Video Player</h1>
 <div id="videoPlayer"></div>
-
 
 <script>
     fetch('http://localhost:8080/api/videoTrailer')
@@ -31,6 +33,7 @@
             console.error('Si è verificato un errore:', error);
         });
 </script>
-
+    
 </body>
-</html>
+
+
