@@ -1,4 +1,4 @@
-/*bozza ancora molto in corsa d'opera*/
+/*css aggiornato anche con bottoni dei sondaggi*/
 
 *
 {
@@ -314,13 +314,39 @@ a.buttondx, p.buttondx
     background-color: #FFE0C3;
     display: inline-block;
     border-radius: 15px;
-    padding: 0.2em 2.899em 0.2em 2.899em;
+    padding: 0.2em 2.84em 0.2em 2.85em;
     margin-right: 0.03em;
 }
 
 a:hover
 {
     color: #2a39b2;
+}
+
+#btn_sondaggiPre
+{
+    margin-top: 1.5em;
+    margin-bottom: 1.92em;
+}
+
+#btn_sondaggiPre a, #btn_sondaggiPost a
+{
+    border-style: solid;
+    border-width: 3px;
+    border-color: #E78C39;
+    background-color: #FFE0C3;
+    border-radius: 15px;
+    padding: 0.25em 0.2em 0.25em 0.2em;
+}
+
+#btn_sondaggiPost a
+{
+    font-size: 1.421em;
+}
+
+#btn_sondaggiPre a
+{
+    font-size: 1.491em;
 }
 
 #torna_su
@@ -365,6 +391,7 @@ footer a
 footer a:hover
 {
     opacity: 1;
+    color: #ffffff
 }
 
 ul.prima_colonna, ul.seconda_colonna, ul.terza_colonna
