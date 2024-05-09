@@ -1,4 +1,4 @@
-/*css aggiornato anche con bottoni dei sondaggi*/
+/*css in fase di aggiornamento per adattarlo a vue js */
 
 *
 {
@@ -6,23 +6,14 @@
     padding: 0;
 }
 
-body
+#app
 {
     font-family: 'Roboto', sans-serif;
     font-size: 1.2em;
     color: #000000;
     background-color: #edecec;
-    /*width:70em;
-    margin:0 auto;*/
     position: relative;
-    /*eventualmente aggiungere width, margin, position*/
 }
-
-a
-{
-    font-family: 'Roboto', sans-serif;
-}
-
 
 /*fromattazione di font e vari*/
 h1
@@ -77,12 +68,20 @@ form
 {
     display: flex;
     align-items: center;
+    margin-top: 0.3em;
 }
 
 #submit
 {
     max-width: 2em;
     max-height: 2em;
+}
+
+#lente_btt
+{
+    background-color: transparent;
+    border-style: none;
+    margin-right: 1em;
 }
 
 li.searchbar
@@ -112,6 +111,11 @@ input
     padding: 10px 20px 10px 20px;
 }
 
+#btn_Accedi
+{
+    margin-left: 0.3em;
+}
+
 
 ul.filtri, li.searchbar
 {
@@ -129,7 +133,6 @@ ul.filtri
     padding: 18px 6px 16px 12px;
 }
 
-/*per fare i bottoni come su figma separa itemlist in due ul e sistema il padding di entrambi*/
 ul.itemlist
 {
     padding: 18px 20px 16px 0;
@@ -283,11 +286,11 @@ ul.link_dx a, ul.link_dx p
     border-color: #E78C39;
     background-color: #FFE0C3;
     border-radius: 15px;
-    padding: 0.2em 0.4em 0.2em 0.4em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
 }
 
 ul.link_dx li.chat_live {
-    margin-left: 0.7em;
+    margin-left: 0.55em;
     margin-right: 0.06em;
 
 }
@@ -341,17 +344,17 @@ a:hover
     border-color: #E78C39;
     background-color: #FFE0C3;
     border-radius: 15px;
-    padding: 0.25em 0.2em 0.25em 0.2em;
+    padding: 0.25em 0.2em 0.25em 0.25em;
 }
 
 #btn_sondaggiPost a
 {
-    font-size: 1.421em;
+    font-size: 1.41em;
 }
 
 #btn_sondaggiPre a
 {
-    font-size: 1.491em;
+    font-size: 1.48em;
 }
 
 #torna_su
