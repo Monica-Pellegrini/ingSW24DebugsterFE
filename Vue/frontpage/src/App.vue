@@ -2,7 +2,14 @@
 </script>
 
 <template>
-  <div id="app" data-v-app>
+  <div lang="it" id="app" data-v-app>
+    <div id="hiddenKeys">
+      <a accesskey="c" href="#main">vai al contenuto della pagina</a>
+      <a accesskey="n" href="#search">vai al menu di navigazione</a>
+      <a accesskey="b" href="#btn_biglietteria"> vai alla sezione per comprare i biglietti</a>
+      <a accesskey="a" href="/Portale/accessibilita.htm"> vai alla sezione Accessibilità</a>
+      <a accesskey="p" href="#primo_link_footer">vai al pié di pagina</a>
+    </div>
     <!--Inizio Header-->
     <header id="header">
       <nav>
@@ -68,7 +75,7 @@
 
         <!--Immagine secondaria-->
         <div id="box_imm2">
-          <img id="imm2" src="@/images/imm2.jpg" alt="Immagine secondaria">
+          <img id="imm2" src="@/images/imm2.jpg" alt="Immagine secondaria dell'evento">
         </div>
         <br>
         <a id="segnala" href="segnala.html">Segnala questo evento</a>
@@ -117,7 +124,7 @@
       <!--Prima colonna-->
       <nav class="footer-nav">
         <ul class="prima_colonna">
-          <li><a href="home.html">Home Page</a></li>
+          <li id="primo_link_footer"><a href="home.html">Home Page</a></li>
           <li><a href="faq.html">FAQs</a></li>
           <li><a href="sponsor.html">Sponsorizzazioni</a></li>
         </ul>

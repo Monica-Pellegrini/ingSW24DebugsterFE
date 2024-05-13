@@ -1,4 +1,4 @@
-/*css in fase di aggiornamento per adattarlo a vue js */
+/*css aggiornato per rispettare gli standard dell'accessibilità*/
 
 *
 {
@@ -56,11 +56,19 @@ a
     color: #3D59E9;
 }
 
+/*formattazione del skiplinks per l'accessibilità*/
+#hiddenKeys
+{
+    position: absolute;
+    left: 50%;
+    top: -7.5em;
+    padding: 0.75em;
+}
 
 /*formattazione dell'header*/
 header
 {
-    background: #E78C39;
+    background: #8f26e1;
     height: 3.6em;
 }
 
@@ -118,7 +126,7 @@ input
 
 #btn_Accedi
 {
-    margin-left: 0.3em;
+    margin-left: 0.5em;
 }
 
 
@@ -185,7 +193,7 @@ main
 {
     width: 72em;
     height: 30em;
-    background-image: linear-gradient(to bottom, #F4E7DB 0%, #bbb9b7 100%);;
+    background-image: linear-gradient(to bottom, #e7dbf4 0%, #bbb9b7 100%);;
     text-align: center;
     margin: 70px auto;
 }
@@ -202,7 +210,7 @@ main
 {
     width: 36em;
     height: 30em;
-    background-image: linear-gradient(to bottom, #F4E7DB 0%, #bbb9b7 100%);;
+    background-image: linear-gradient(to bottom, #e7dbf4 0%, #bbb9b7 100%);;
     text-align: center;
     margin: 50px 0 0 0;
 }
@@ -234,8 +242,8 @@ aside
 {
     float: right;
     text-align: center;
-    border: solid 3px #E78C39;
-    background-color: #FFF7EB;
+    border: solid 3px #8F26E1;
+    background-color: #F8EBFF;
     border-radius: 20px;
     width: 16.7em;
     margin-top: 0.3em;
@@ -258,9 +266,9 @@ aside
     font-size: 1.5em;
     border-style: solid;
     border-width: 2px;
-    border-color: #B56113;
+    border-color: #5C1098;
     border-radius: 25px;
-    background-color: #E78C39;
+    background-color: #8F26E1;
     display: inline-block;
     padding: 0.5em 1em 0.5em 1em;
 }
@@ -268,7 +276,7 @@ aside
 #btn_biglietteria a:active
 {
     color: #dadada;
-    background-color: #B56113;
+    background-color: #5C1098;
 }
 
 #nav_dx
@@ -288,8 +296,8 @@ ul.link_dx a, ul.link_dx p
 {
     border-style: solid;
     border-width: 3px;
-    border-color: #E78C39;
-    background-color: #FFE0C3;
+    border-color: #8F26E1;
+    background-color: #F4C3FF;
     border-radius: 15px;
     padding: 0.2em 0.5em 0.2em 0.5em;
 }
@@ -300,10 +308,20 @@ ul.link_dx li.chat_live {
 
 }
 
+aside a
+{
+    color: #6A2EE1;
+}
+
+aside a:hover
+{
+    color: #4002af;
+}
+
 #nav_dx a:active
 {
-    color: #3047b7;
-    background-color: #E78C39;
+    color: #dadada;
+    background-color: #8F26E1;
 }
 
 a.buttondx, p.buttondx
@@ -323,8 +341,8 @@ a.buttondx, p.buttondx
 {
     border-style: solid;
     border-width: 3px;
-    border-color: #E78C39;
-    background-color: #FFE0C3;
+    border-color: #8F26E1;
+    background-color: #F4C3FF;
     display: inline-block;
     border-radius: 15px;
     padding: 0.2em 2.84em 0.2em 2.85em;
@@ -346,8 +364,8 @@ a:hover
 {
     border-style: solid;
     border-width: 3px;
-    border-color: #E78C39;
-    background-color: #FFE0C3;
+    border-color: #8F26E1;
+    background-color: #F4C3FF;
     border-radius: 15px;
     padding: 0.25em 0.2em 0.25em 0.25em;
 }
@@ -368,7 +386,7 @@ a:hover
     position: absolute;
     bottom: 0;
     right: 0;
-    border: solid 3px #E78C39;
+    border: solid 3px #8F26E1;
     background-color: #ffffff;
     border-radius: 10px;
     width: 2em;
@@ -387,9 +405,9 @@ footer
 {
     text-align: center;
     width: 100%;
-    background: #E78C39;
+    background: #8F26E1;
     font-family: 'Roboto', sans-serif;
-    font-weight: 600;
+    font-weight: bold;
     height: 8em;
     margin-top:2.5em;
 }
@@ -398,7 +416,7 @@ footer a
 {
     text-decoration: none;
     color: #ffffff;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 footer a:hover
