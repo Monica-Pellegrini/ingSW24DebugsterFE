@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <div lang="it" id="app" data-v-app>
     <div id="hiddenKeys">
@@ -45,9 +42,10 @@
     <!--Fine Header-->
     <!--Inizio Main-->
     <main id="main" class="clearfix">
+
       <!--Immagine principale-->
       <div id="box_banner">
-        <img id="banner" src="@/images/banner.jpg" alt="Banner dell'evento">
+        <carousel :slides="slides" :interval="3000" controls indicators id="banner"></carousel>
       </div>
 
       <!--Colonna sinistra-->
@@ -145,6 +143,24 @@
     <!--Fine Footer-->
   </div>
 </template>
+
+<script>
+import Carousel from "./components/carousel/Carousel.vue";
+
+export default {
+  name: "App",
+  components: { Carousel },
+  data: () => ({
+    slides: [
+      "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F690023249%2F12679432051%2F1%2Foriginal.20240205-123236?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C1000%2C500&s=76094057b62b34c4ed18f1136e339d01",
+      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_0.jpg",
+      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_1.jpg",
+      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_18.jpg",
+      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_20.jpg",
+    ],
+  }),
+};
+</script>
 
 <style scoped>
   @import 'stylesheet.css';

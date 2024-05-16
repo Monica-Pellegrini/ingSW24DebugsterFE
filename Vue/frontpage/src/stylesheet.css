@@ -193,16 +193,9 @@ main
 {
     width: 72em;
     height: 30em;
-    background-image: linear-gradient(to bottom, #e7dbf4 0%, #bbb9b7 100%);;
+    background-image: linear-gradient(to bottom, #e7dbf4 0%, #bbb9b7 100%);
     text-align: center;
     margin: 70px auto;
-}
-
-#banner
-{
-    background: transparent no-repeat;
-    height: 30em;
-    max-width: 72em;
 }
 
 /*formattazzione colonna di sinistra*/
@@ -210,7 +203,7 @@ main
 {
     width: 36em;
     height: 30em;
-    background-image: linear-gradient(to bottom, #e7dbf4 0%, #bbb9b7 100%);;
+    background-image: linear-gradient(to bottom, #e7dbf4 0%, #bbb9b7 100%);
     text-align: center;
     margin: 50px 0 0 0;
 }
