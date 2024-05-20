@@ -1,5 +1,6 @@
 <template>
   <div lang="it" id="app" data-v-app>
+    <!--skip per l'accessibilità-->
     <div id="hiddenKeys">
       <a accesskey="c" href="#main">vai al contenuto della pagina</a>
       <a accesskey="n" href="#search">vai al menu di navigazione</a>
@@ -10,13 +11,12 @@
     <!--Inizio Header-->
     <header id="header">
       <nav>
-        <ul class="nav">
+        <ul>
           <li class="searchbar">
             <!--Form per la ricerca-->
             <form name="searchForm" method="get">
-              <!--Immagine per il submit, va a sinistra del textbox-->
               <label></label>
-              <button type="submit" id="lente_btt">
+              <button type="submit" id="Bottonelente">
                 <img id="submit" src="@/images/lente.png" alt="Clicca qui per per cercare">
               </button>
 
@@ -25,15 +25,15 @@
               <input type="text" id="search" name="search" value="" maxlength="50" required placeholder="Cerca . . ." size="50"/>
             </form>
           </li>
-          <li class="items">
-            <!--Link a bottone-->
+          <li>
+            <!--Bottoni header-->
             <ul class="filtri">
-              <li><a id="btnFiltri" class="button" href="filtri.html">Filtri</a></li>
+              <li><a class="BottoneHeader" href="filtri.html">Filtri</a></li>
             </ul>
             <ul class="itemlist">
               <!--Filtri è vicino al textbox, gli altri sono raggruppati a sinistra-->
-              <li><a id="btn_Iscriviti" class="button" href="iscriviti.html">Iscriviti</a></li>
-              <li><a id="btn_Accedi"  class="button" href="accedi.html">Accedi</a></li>
+              <li><a class="BottoneHeader" href="iscriviti.html">Iscriviti</a></li>
+              <li><a id="BottoneAccedi"  class="BottoneHeader" href="accedi.html">Accedi</a></li>
             </ul>
           </li>
         </ul>
@@ -49,9 +49,9 @@
       </div>
 
       <!--Colonna sinistra-->
-      <section id="colonna_sx">
+      <section id="ColonnaSinistra">
         <h1>Nome evento</h1>
-        <p id="descrizione" class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <br>
         <br>
         <h2>Data e ora</h2>
@@ -69,39 +69,39 @@
         <br>
         <br>
         <h2>Infromazioni sull'evento</h2>
-        <p id="info" class="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="informazioni">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
         <!--Immagine secondaria-->
-        <div id="box_imm2">
-          <img id="imm2" src="@/images/imm2.jpg" alt="Immagine secondaria dell'evento">
+        <div id="BoxImmagine2">
+          <img id="Immagine2" src="@/images/imm2.jpg" alt="Immagine secondaria dell'evento">
         </div>
         <br>
         <a id="segnala" href="segnala.html">Segnala questo evento</a>
       </section>
 
       <!--Colonna destra-->
-      <aside id="colonna_dx">
+      <aside id="ColonnaDestra">
         <!--Box con prezzo e link biglietteria-->
-        <div id="box_bigl">
+        <div id="BoxBiglietteria">
           <h2 id="prezzo">9 - 18€</h2>
-          <div id="btn_biglietteria">
+          <div id="BottoneBiglietteria">
             <a href="biglietteria.html">COMPRA ORA</a>
           </div>
         </div>
 
         <!--Link vari-->
-        <nav id="nav_dx">
+        <nav id="NavDestra">
           <ul>
             <li>
-              <ul class="link_dx">
-                <li><p id="btn_segui" class="buttondx">Segui</p></li>
-                <li class="chat_live"><a id="btn_chat" class="buttondx" href="chat.html">Chat</a></li>
-                <li class="chat_live"><a id="btn_live" class="buttondx" href="live.html">Live</a></li>
+              <ul class="LinkDestra">
+                <li><p class="BottoneDestra">Segui</p></li>
+                <li class="chat_live"><a class="BottoneDestra" href="chat.html">Chat</a></li>
+                <li class="chat_live"><a class="BottoneDestra" href="live.html">Live</a></li>
               </ul>
             </li>
-            <li id="btn_recensioni"><a class="buttondx" href="recensioni.html">Recensioni</a></li>
-            <li id="btn_sondaggiPre"><a class="buttondx" href="http://localhost:8080/api/sondaggioPre">Sondaggio pre-evento</a></li>
-            <li id="btn_sondaggiPost"><a class="buttondx" href="http://localhost:8080/api/sondaggioPost">Sondaggio post-evento</a></li>
+            <li id="BottoneRecensioni"><a class="BottoneDestra" href="recensioni.html">Recensioni</a></li>
+            <li id="BottoneSondaggiPre"><a class="BottoneDestra" href="http://localhost:8080/api/sondaggioPre">Sondaggio pre-evento</a></li>
+            <li id="BottoneSondaggiPost"><a class="BottoneDestra" href="http://localhost:8080/api/sondaggioPost">Sondaggio post-evento</a></li>
           </ul>
         </nav>
 

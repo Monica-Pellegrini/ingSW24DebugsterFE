@@ -45,7 +45,7 @@ p.description
     line-height: 25px;
 }
 
-p.info
+p.informazioni
 {
     font-family: 'Outfit', sans-serif;
     line-height: 30px;
@@ -85,14 +85,14 @@ form
     max-height: 2em;
 }
 
-#lente_btt
+#Bottonelente
 {
     background-color: transparent;
     border-style: none;
     margin-right: 1em;
 }
 
-#lente_btt:hover
+#Bottonelente:hover
 {
     cursor: pointer;
 }
@@ -107,7 +107,7 @@ ul, li
     list-style: none;
 }
 
-a.button
+a.BottoneHeader
 {
     text-transform: capitalize;
     text-decoration: none;
@@ -124,7 +124,7 @@ input
     padding: 10px 20px 10px 20px;
 }
 
-#btn_Accedi
+#BottoneAccedi
 {
     margin-left: 0.5em;
 }
@@ -182,13 +182,6 @@ main
 }
 
 /*formattazione dei banner*/
-#colonna_sx
-{
-    width:36em;
-    text-align: left;
-    float: left;
-}
-
 #box_banner
 {
     width: 72em;
@@ -199,7 +192,14 @@ main
 }
 
 /*formattazzione colonna di sinistra*/
-#box_imm2
+#ColonnaSinistra
+{
+    width:36em;
+    text-align: left;
+    float: left;
+}
+
+#BoxImmagine2
 {
     width: 36em;
     height: 30em;
@@ -208,7 +208,7 @@ main
     margin: 50px 0 0 0;
 }
 
-#imm2
+#Immagine2
 {
     background: transparent no-repeat;
     height: 30em;
@@ -231,7 +231,7 @@ aside
     text-align: right;
 }
 
-#box_bigl
+#BoxBiglietteria
 {
     float: right;
     text-align: center;
@@ -243,14 +243,14 @@ aside
     margin-bottom: 0.8em;
 }
 
-#btn_biglietteria
+#BottoneBiglietteria
 {
     display: inline-block;
     margin-bottom: 1em;
 
 }
 
-#btn_biglietteria a
+#BottoneBiglietteria a
 {
     text-decoration: none;
     color: #ffffff;
@@ -266,26 +266,26 @@ aside
     padding: 0.5em 1em 0.5em 1em;
 }
 
-#btn_biglietteria a:active
+#BottoneBiglietteria a:active
 {
     color: #dadada;
     background-color: #5C1098;
 }
 
-#nav_dx
+#NavDestra
 {
     clear: both;
     float:right;
     text-align: center;
 }
 
-ul.link_dx li
+ul.LinkDestra li
 {
     display: inline-block;
     margin-bottom: 1em;
 }
 
-ul.link_dx a, ul.link_dx p
+ul.LinkDestra a, ul.LinkDestra p
 {
     border-style: solid;
     border-width: 3px;
@@ -295,7 +295,7 @@ ul.link_dx a, ul.link_dx p
     padding: 0.2em 0.5em 0.2em 0.5em;
 }
 
-ul.link_dx li.chat_live {
+ul.LinkDestra li.chat_live {
     margin-left: 0.55em;
     margin-right: 0.06em;
 
@@ -311,13 +311,13 @@ aside a:hover
     color: #4002af;
 }
 
-#nav_dx a:active
+#NavDestra a:active
 {
     color: #dadada;
     background-color: #8F26E1;
 }
 
-a.buttondx, p.buttondx
+a.BottoneDestra, p.BottoneDestra
 {
     font-size: 1.5em;
     text-transform: capitalize;
@@ -325,12 +325,12 @@ a.buttondx, p.buttondx
     font-weight: 600;
 }
 
-#btn_recensioni
+#BottoneRecensioni
 {
     display: inline-block;
 }
 
-#btn_recensioni a
+#BottoneRecensioni a
 {
     border-style: solid;
     border-width: 3px;
@@ -347,13 +347,13 @@ a:hover
     color: #2a39b2;
 }
 
-#btn_sondaggiPre
+#BottoneSondaggiPre
 {
     margin-top: 1.5em;
     margin-bottom: 1.92em;
 }
 
-#btn_sondaggiPre a, #btn_sondaggiPost a
+#BottoneSondaggiPre a, #BottoneSondaggiPost a
 {
     border-style: solid;
     border-width: 3px;
@@ -363,12 +363,12 @@ a:hover
     padding: 0.25em 0.2em 0.25em 0.25em;
 }
 
-#btn_sondaggiPost a
+#BottoneSondaggiPost a
 {
     font-size: 1.41em;
 }
 
-#btn_sondaggiPre a
+#BottoneSondaggiPre a
 {
     font-size: 1.48em;
 }
