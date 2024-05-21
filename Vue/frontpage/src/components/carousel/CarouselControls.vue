@@ -1,7 +1,11 @@
 <template>
   <!-- in vue 2.x you need wrap these buttons in a div -->
-  <button class="carousel-control left" @click="$emit('prev')">Prev</button>
-  <button class="carousel-control right" @click="$emit('next')">Next</button>
+  <button class="carousel-control left" @click="$emit('prev')">
+    <img class="FrecciaScorrimento" role="button" src="@/images/frecciaSinistra.png" alt="Clicca qui per scorrere carosello a sinistra">
+  </button>
+  <button class="carousel-control right" @click="$emit('next')">
+    <img class="FrecciaScorrimento" role="button" src="@/images/frecciaDestra.png" alt="Clicca qui per scorrere carosello a destra">
+  </button>
 </template>
 
 <script>
@@ -26,5 +30,11 @@ export default {
 }
 .right {
   right: 0;
+}
+
+.FrecciaScorrimento
+{
+  height: 50px;
+  width: 60px;
 }
 </style>
