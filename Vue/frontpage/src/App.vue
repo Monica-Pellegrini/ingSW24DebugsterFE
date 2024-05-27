@@ -1,4 +1,10 @@
 <template>
+  <head>
+    <title></title>
+    <meta
+        name="description"
+        content="Pagina principale dell'evento contiene informazioni su data, luogo, organizzatore e prezzo">
+  </head>
   <div lang="it" id="app" data-v-app>
     <!--skip per l'accessibilità-->
     <div id="hiddenKeys">
@@ -29,12 +35,12 @@
       </nav>
       <nav role="navigation" aria-label="Menù User">
         <ul role="menu">
-          <li>
+          <li role="menuitem">
             <!--Bottoni header-->
-            <ul class="filtri">
+            <ul class="filtri" role="menu">
               <li role="menuitem"><a class="BottoneHeader" href="filtri.html">Filtri</a></li>
             </ul>
-            <ul class="itemlist">
+            <ul class="itemlist" role="menu">
               <!--Filtri è vicino al textbox, gli altri sono raggruppati a sinistra-->
               <li role="menuitem"><a class="BottoneHeader" href="iscriviti.html">Iscriviti</a></li>
               <li role="menuitem"><a id="BottoneAccedi"  class="BottoneHeader" href="accedi.html">Accedi</a></li>
@@ -95,8 +101,8 @@
         <!--Link vari-->
         <nav id="NavDestra" role="navigation">
           <ul role="menu">
-            <li>
-              <ul class="LinkDestra">
+            <li role="menuitem">
+              <ul class="LinkDestra" role="menu">
                 <li role="menuitem"><p class="BottoneDestra">Segui</p></li>
                 <li role="menuitem" class="chat_live"><a class="BottoneDestra" href="chat.html">Chat</a></li>
                 <li role="menuitem" class="chat_live"><a class="BottoneDestra" href="live.html">Live</a></li>
