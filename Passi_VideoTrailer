@@ -1,4 +1,4 @@
-mettere dentro a script:
+1) mettere dentro al tag script:
 
 fetch('/api/videoTrailer')
     .then(response => response.text())
@@ -18,4 +18,11 @@ fetch('/api/videoTrailer')
       console.error('Si è verificato un errore:', error);
     });
 
+2) cambiare id="video" in id="videoPlayer"
 
+3) nel css mettere:
+
+#BottoneSondaggiPost
+{
+    margin-bottom: 1.92em;
+}
