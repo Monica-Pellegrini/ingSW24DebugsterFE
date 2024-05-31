@@ -1,17 +1,100 @@
+<script>
+import Carousel from "./components/carousel/Carousel.vue";
+import axios from 'axios';
+import { ref } from 'vue';
+
+/* Prendiamo le variabili passate dalla chiamata */
+const params = new URL(document.location.toString()).searchParams;
+const id_evento = params.get("id_e");
+const id_utente = params.get("id_u");
+console.log(id_evento);
+console.log(id_utente);
+
+ /*new class View{
+  "nome_utente": string;
+  "nome_evento": string;
+  "descrizione_evento": string;
+  "data_evento": string;
+  "ora_evento": string;
+  "luogo_evento": string;
+  "nome_organizzatore": string;
+  "informazioni_evento": string;
+  "link_sondaggio_pre_evento": string;
+  "link_sondaggio_post_evento": string;
+  "prezzo_biglietto_evento": string[];
+  "immagini_banner_evento": string[];
+  "immagine_secondaria_evento": string;
+  "utente_segue_evento": boolean;
+}*/
+
+//questa rest va a mockoon
+const restCall = "http://localhost:3001/api/datiEvento?id_e=" + id_evento + "&id_u=" + id_utente;
+
+/* Inseriamo in una variabile reattiva chiamata data */
+const data = ref(0);
+
+/* Inseriamo nella variabile data il risultato della chiamata al backend */
+axios.get(restCall).then(response => {
+  console.log(response.data)
+  data.value = response.data
+})
+
+let seguito;
+let slides;
+
+export default {
+  name: "App",
+  components: { Carousel },
+  data: () => ({
+    id_u: id_utente,
+    data: data,
+    seguito: seguito,
+    slides: [],
+  }),
+  methods: {
+    seguiEvento() {
+
+      this.data.utente_segue_evento = !this.data.utente_segue_evento;
+
+      if (this.data.utente_segue_evento === true){
+        this.seguito = "Seguito";
+      }else{
+        this.seguito = "NonSeguito";
+      }
+
+
+      /* INSERIRE REST */
+
+    }
+  },
+  beforeMount() {
+    if (this.data.utente_segue_evento === true){
+      this.seguito = "Seguito";
+    }else{
+      this.seguito = "NonSeguito";
+    }
+  },
+  mounted() {
+    this.slides = this.data.immagini_banner_evento;
+  }
+}
+
+</script>
+
 <template>
   <head>
-    <title></title>
+    <title>{{data.nome_evento}}</title>
     <meta
         name="description"
         content="Pagina principale dell'evento contiene informazioni su data, luogo, organizzatore e prezzo">
   </head>
-  <div lang="it" id="app" data-v-app>
+  <div lang="it" id="app" data-v-app @loadstart="onLoad">
     <!--skip per l'accessibilità-->
     <div id="hiddenKeys">
       <a accesskey="c" href="#main">vai al contenuto della pagina</a>
       <a accesskey="n" href="#search">vai al menu di navigazione</a>
       <a accesskey="b" href="#BottoneBiglietteria"> vai alla sezione per comprare i biglietti</a>
-      <a accesskey="a" href="/Portale/accessibilita.htm"> vai alla sezione Accessibilità</a>
+      <a accesskey="a" href="/Portale/accessibilita.html"> vai alla sezione Accessibilità</a>
       <a accesskey="p" href="#primo_link_footer">vai al pié di pagina</a>
     </div>
     <!--Inizio Header-->
@@ -42,8 +125,10 @@
             </ul>
             <ul class="itemlist" role="menu">
               <!--Filtri è vicino al textbox, gli altri sono raggruppati a sinistra-->
-              <li role="menuitem"><a class="BottoneHeader" href="iscriviti.html">Iscriviti</a></li>
-              <li role="menuitem"><a id="BottoneAccedi"  class="BottoneHeader" href="accedi.html">Accedi</a></li>
+              <li v-if="id_u === '0'" role="menuitem"><a class="BottoneHeader" href="iscriviti.html">Iscriviti</a></li>
+              <li v-if="id_u === '0'" role="menuitem"><a id="BottoneAccedi"  class="BottoneHeader" href="accedi.html">Accedi</a></li>
+              <!--Se l'utente è registrato-->
+              <li v-else role="menuitem"><a id="BottoneProfilo"  class="BottoneHeader" href="utente.html">{{ data.nome_utente }}</a></li>
             </ul>
           </li>
         </ul>
@@ -59,30 +144,30 @@
 
       <!--Colonna sinistra-->
       <section id="ColonnaSinistra">
-        <h1>Nome evento</h1>
-        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h1>{{ data.nome_evento }}</h1>
+        <p class="description">{{ data.descrizione_evento }}</p>
         <br>
         <br>
         <h2>Data e ora</h2>
-        <p id="data" class="description">Lun, 1 Gen 2024 09:00 - 13:00 CET</p>
+        <p id="data" class="description">{{ data.data_evento }} {{data.ora_evento}}</p>
         <br>
         <br>
         <h2>Location</h2>
-        <a id="location" class="description" href="mappa.html">Via Giuseppe Saragat, 1, 44124 Ferrara FE</a>
+        <a id="location" class="description" href="mappa.html">{{ data.nome_evento }}</a>
         <br>
         <br>
         <br>
         <h2>Organizzato da</h2>
-        <a id="organizzatore" class="description" href="profilo_org.html">Dr Nerina Ramlakhan</a>
+        <a id="organizzatore" class="description" href="profilo_org.html">{{ data.nome_organizzatore }}</a>
         <br>
         <br>
         <br>
         <h2>Informazioni sull'evento</h2>
-        <p class="informazioni">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="informazioni">{{ data.informazioni_evento }}</p>
 
         <!--Immagine secondaria-->
         <div id="BoxImmagine2">
-          <img id="Immagine2" src="@/images/imm2.jpg" alt="Immagine secondaria dell'evento">
+          <img id="Immagine2" v-bind:src="data.immagine_secondaria_evento" alt="Immagine secondaria dell'evento">
         </div>
         <br>
         <a id="segnala" href="segnala.html">Segnala questo evento</a>
@@ -90,9 +175,12 @@
 
       <!--Colonna destra-->
       <aside id="ColonnaDestra">
+
         <!--Box con prezzo e link biglietteria-->
         <div id="BoxBiglietteria">
-          <h2 id="prezzo">9 - 18€</h2>
+          <h2 id="prezzo" v-if="data.prezzo_biglietti_evento[0] == 0 && data.prezzo_biglietti_evento.length == 1">Gratis</h2>
+          <h2 id="prezzo" v-else-if="data.prezzo_biglietti_evento[0] != 0 && data.prezzo_biglietti_evento.length == 1">{{data.prezzo_biglietti_evento[0]}} €</h2>
+          <h2 id="prezzo" v-else>{{data.prezzo_biglietti_evento[0]}} - {{data.prezzo_biglietti_evento[data.prezzo_biglietti_evento.length - 1]}} €</h2>
           <div id="BottoneBiglietteria">
             <a href="biglietteria.html">COMPRA ORA</a>
           </div>
@@ -103,14 +191,14 @@
           <ul role="menu">
             <li role="menuitem">
               <ul class="LinkDestra" role="menu">
-                <li role="menuitem"><p class="BottoneDestra">Segui</p></li>
+                <li role="menuitem" v-if="id_u !== '0'"><a class="BottoneDestra" v-bind:id="seguito" @click="seguiEvento">Segui</a></li>
                 <li role="menuitem" class="chat_live"><a class="BottoneDestra" href="chat.html">Chat</a></li>
                 <li role="menuitem" class="chat_live"><a class="BottoneDestra" href="live.html">Live</a></li>
               </ul>
             </li>
             <li role="menuitem" id="BottoneRecensioni"><a class="BottoneDestra" href="recensioni.html">Recensioni</a></li>
-            <li role="menuitem" id="BottoneSondaggiPre"><a class="BottoneDestra" href="http://localhost:8080/api/sondaggioPre">Sondaggio pre-evento</a></li>
-            <li role="menuitem" id="BottoneSondaggiPost"><a class="BottoneDestra" href="http://localhost:8080/api/sondaggioPost">Sondaggio post-evento</a></li>
+            <li role="menuitem" id="BottoneSondaggiPre"><a class="BottoneDestra" v-bind:href="data.link_sondaggio_pre_evento">Sondaggio pre-evento</a></li>
+            <li role="menuitem" id="BottoneSondaggiPost"><a class="BottoneDestra" v-bind:href="data.link_sondaggio_post_evento">Sondaggio post-evento</a></li>
           </ul>
         </nav>
 
@@ -153,24 +241,7 @@
   </div>
 </template>
 
-<script>
-import Carousel from "./components/carousel/Carousel.vue";
-
-export default {
-  name: "App",
-  components: { Carousel },
-  data: () => ({
-    slides: [
-      "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F690023249%2F12679432051%2F1%2Foriginal.20240205-123236?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C1000%2C500&s=76094057b62b34c4ed18f1136e339d01",
-      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_0.jpg",
-      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_1.jpg",
-      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_18.jpg",
-      "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_20.jpg",
-    ],
-  }),
-};
-</script>
 
 <style scoped>
-  @import 'stylesheet.css';
+@import 'stylesheet.css';
 </style>
