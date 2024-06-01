@@ -39,8 +39,23 @@ axios.get(restCall).then(response => {
   data.value = response.data
 })
 
-let seguito;
-let slides;
+fetch('/api/videoTrailer')
+    .then(response => response.text())
+    .then(videoUrl => {
+      // Costruisce l'iframe per incorporare il video
+      var iframe = document.createElement('iframe');
+      iframe.width = '560';
+      iframe.height = '315';
+      iframe.src = videoUrl;
+      iframe.frameborder = '0';
+      iframe.allowfullscreen = true;
+
+      // Aggiunge al div 'videoPlayer'
+      document.getElementById('videoPlayer').appendChild(iframe);
+    })
+    .catch(error => {
+      console.error('Si è verificato un errore:', error);
+    });
 
 export default {
   name: "App",
@@ -48,7 +63,7 @@ export default {
   data: () => ({
     id_u: id_utente,
     data: data,
-    seguito: seguito,
+    seguito: null,
     slides: [],
   }),
   methods: {
@@ -203,7 +218,7 @@ export default {
         </nav>
 
         <!--Box video-->
-        <div id="video"><!--QUI VA IL VIDEO--></div>
+        <div id="videoPlayer"><!--QUI VA IL VIDEO--></div>
 
       </aside>
 

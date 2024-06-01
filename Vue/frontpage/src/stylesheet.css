@@ -359,6 +359,11 @@ a:hover
     margin-bottom: 1.92em;
 }
 
+#BottoneSondaggiPost
+{
+    margin-bottom: 1.92em;
+}
+
 #BottoneSondaggiPre a, #BottoneSondaggiPost a
 {
     border-style: solid;
