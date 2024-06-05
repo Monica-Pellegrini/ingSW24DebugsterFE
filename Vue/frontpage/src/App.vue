@@ -18,39 +18,43 @@ console.log(id_utente);
   "ora_evento": string;
   "luogo_evento": string;
   "nome_organizzatore": string;
+  "id_organizzzatore": number;
   "informazioni_evento": string;
   "link_sondaggio_pre_evento": string;
   "link_sondaggio_post_evento": string;
-  "prezzo_biglietto_evento": string[];
+  "prezzo_biglietti_evento": string[];
   "immagini_banner_evento": string[];
-  "immagine_secondaria_evento": string;
+  "immagini_secondarie_evento": string[];
   "utente_segue_evento": boolean;
 }*/
 
-//questa rest va a mockoon
+/* Costruiamo la chiamata rest */
 const restCall = "http://localhost:3001/api/datiEvento?id_e=" + id_evento + "&id_u=" + id_utente;
 
 /* Inseriamo in una variabile reattiva chiamata data */
 const data = ref(0);
 
-/* Inseriamo nella variabile data il risultato della chiamata al backend */
+/* Effettuiamo la chiamata per recuperare il video e inseriamo nella variabile data il risultato */
 axios.get(restCall).then(response => {
   console.log(response.data)
   data.value = response.data
-})
+  }).catch(error => {
+  console.error('Si è verificato un errore:', error);
+  });
 
+/* Effettuiamo la chiamata per recuperare il video */
 fetch('/api/videoTrailer')
     .then(response => response.text())
     .then(videoUrl => {
-      // Costruisce l'iframe per incorporare il video
-      var iframe = document.createElement('iframe');
+      /* Costruiamo l'iframe per incorporare il video */
+      const iframe = document.createElement('iframe');
       iframe.width = '560';
       iframe.height = '315';
       iframe.src = videoUrl;
       iframe.frameborder = '0';
       iframe.allowfullscreen = true;
 
-      // Aggiunge al div 'videoPlayer'
+      /* Aggiungiamo al div 'videoPlayer' */
       document.getElementById('videoPlayer').appendChild(iframe);
     })
     .catch(error => {
@@ -65,8 +69,19 @@ export default {
     data: data,
     seguito: null,
     slides: [],
+    link_profilo_utente: null,
+    link_mappa: null,
+    link_profilo_organizzatore: null,
+    link_biglietteria: null,
+    link_chat: null,
+    link_live: null,
+    link_recensioni: null,
+    link_segnalazione: null
   }),
+
   methods: {
+
+    /* Evento in caso di follow/unfollow */
     seguiEvento() {
 
       this.data.utente_segue_evento = !this.data.utente_segue_evento;
@@ -77,20 +92,38 @@ export default {
         this.seguito = "NonSeguito";
       }
 
-
       /* INSERIRE REST */
 
     }
   },
+
   beforeMount() {
+
     if (this.data.utente_segue_evento === true){
       this.seguito = "Seguito";
     }else{
       this.seguito = "NonSeguito";
     }
+
+    /* Costruiamo i link alle altre funzioni con i parametri passati*/
+    this.link_profilo_utente = "/ilMioProfilo?id_u=" + id_utente;
+    this.link_mappa = "/mappaEvento?id_e=" + id_evento + "&id_u=" + id_utente;
+    this.link_profilo_organizzatore = "/visualizzaProfilo?id_o=" + this.data.id_organizzatore + "&id_u=" + id_utente;
+    this.link_biglietteria = "/biglietteriaEvento?id_e=" + id_evento + "&id_u=" + id_utente;
+    this.link_chat = "/chatEvento?id_e=" + id_evento + "&id_u=" + id_utente;
+    this.link_live = "/liveEvento?id_e=" + id_evento + "&id_u=" + id_utente;
+    this.link_recensioni = "/recensioniEvento?id_e=" + id_evento + "&id_u=" + id_utente;
+    this.link_segnalazione = "/segnalaEvento?id_e=" + id_evento + "&id_u=" + id_utente;
   },
+
   mounted() {
     this.slides = this.data.immagini_banner_evento;
+
+    /* Settiamo il nome dell'evento come titolo della pagina */
+    if(this.data.nome_evento){
+      document.title = JSON.stringify(this.data.nome_evento).slice(1,-1)
+    }
+
   }
 }
 
@@ -103,15 +136,16 @@ export default {
         name="description"
         content="Pagina principale dell'evento contiene informazioni su data, luogo, organizzatore e prezzo">
   </head>
-  <div lang="it" id="app" data-v-app @loadstart="onLoad">
-    <!--skip per l'accessibilità-->
+  <div lang="it" id="app" data-v-app>
+    <!--Skip per l'accessibilità-->
     <div id="hiddenKeys">
-      <a accesskey="c" href="#main">vai al contenuto della pagina</a>
-      <a accesskey="n" href="#search">vai al menu di navigazione</a>
-      <a accesskey="b" href="#BottoneBiglietteria"> vai alla sezione per comprare i biglietti</a>
-      <a accesskey="a" href="/Portale/accessibilita.html"> vai alla sezione Accessibilità</a>
-      <a accesskey="p" href="#primo_link_footer">vai al pié di pagina</a>
+      <a accesskey="c" href="#main">Vai al contenuto della pagina</a>
+      <a accesskey="n" href="#search">Vai al menu di navigazione</a>
+      <a accesskey="b" href="#BottoneBiglietteria">Vai alla sezione per comprare i biglietti</a>
+      <a accesskey="a" href="/Portale/accessibilita">Vai alla sezione Accessibilità</a>
+      <a accesskey="p" href="#primo_link_footer">Vai al pié di pagina</a>
     </div>
+
     <!--Inizio Header-->
     <header id="header">
       <nav role="navigation" aria-label="Barra Ricerca">
@@ -124,7 +158,7 @@ export default {
                 <img id="submit" role="button" src="@/images/lente.png" alt="Clicca qui per per cercare">
               </button>
 
-              <!--Textbox per ricerca-->
+              <!--Textbox per la ricerca-->
               <label></label>
               <input type="text" role="textbox" id="search" name="search" value="" maxlength="50" required placeholder="Cerca . . ." size="50"/>
             </form>
@@ -134,31 +168,45 @@ export default {
       <nav role="navigation" aria-label="Menù User">
         <ul role="menu">
           <li role="menuitem">
-            <!--Bottoni header-->
+            <!--Bottone filtro-->
             <ul class="filtri" role="menu">
-              <li role="menuitem"><a class="BottoneHeader" href="filtri.html">Filtri</a></li>
+              <li role="menuitem"><a class="BottoneHeader" href="/filtri">Filtri</a></li>
             </ul>
             <ul class="itemlist" role="menu">
-              <!--Filtri è vicino al textbox, gli altri sono raggruppati a sinistra-->
-              <li v-if="id_u === '0'" role="menuitem"><a class="BottoneHeader" href="iscriviti.html">Iscriviti</a></li>
-              <li v-if="id_u === '0'" role="menuitem"><a id="BottoneAccedi"  class="BottoneHeader" href="accedi.html">Accedi</a></li>
-              <!--Se l'utente è registrato-->
-              <li v-else role="menuitem"><a id="BottoneProfilo"  class="BottoneHeader" href="utente.html">{{ data.nome_utente }}</a></li>
+              <!--Se l'utente non ha fatto l'accesso-->
+              <li v-if="id_u === '0'" role="menuitem">
+                <ul>
+                  <li role="menuitem"><a class="BottoneHeader" href="/iscriviti">Iscriviti</a></li>
+                  <li role="menuitem"><a id="BottoneAccedi"  class="BottoneHeader" href="/accedi">Accedi</a></li>
+                </ul>
+              </li>
+              <!--Se l'utente ha fatto l'accesso-->
+              <li v-else role="menuitem">
+                <ul>
+                  <li role="menuitem"><p id="Account" class="BottoneHeader">Il mio account:</p></li>
+                  <li role="menuitem"><a id="BottoneProfilo"  class="BottoneHeader" :href="link_profilo_utente">{{ data.nome_utente }}</a></li>
+                </ul>
+              </li>
+
             </ul>
           </li>
         </ul>
       </nav>
     </header>
     <!--Fine Header-->
+
     <!--Inizio Main-->
     <main id="main" class="clearfix" role="main">
-      <!--Immagine principale-->
-      <div id="box_banner">
+
+      <!--Banner con immagini principali-->
+      <div v-if="slides.length !== 0" id="box_banner">
         <carousel :slides="slides" :interval="3000" controls indicators id="banner"></carousel>
       </div>
 
       <!--Colonna sinistra-->
       <section id="ColonnaSinistra">
+
+        <!--Infromazioni generali sull'evento-->
         <h1>{{ data.nome_evento }}</h1>
         <p class="description">{{ data.descrizione_evento }}</p>
         <br>
@@ -168,36 +216,44 @@ export default {
         <br>
         <br>
         <h2>Location</h2>
-        <a id="location" class="description" href="mappa.html">{{ data.nome_evento }}</a>
+        <a id="location" class="description" :href="link_mappa">{{ data.luogo_evento }}</a>
         <br>
         <br>
         <br>
         <h2>Organizzato da</h2>
-        <a id="organizzatore" class="description" href="profilo_org.html">{{ data.nome_organizzatore }}</a>
+        <a id="organizzatore" class="description" :href="link_profilo_organizzatore">{{ data.nome_organizzatore }}</a>
         <br>
         <br>
         <br>
         <h2>Informazioni sull'evento</h2>
         <p class="informazioni">{{ data.informazioni_evento }}</p>
 
-        <!--Immagine secondaria-->
-        <div id="BoxImmagine2">
-          <img id="Immagine2" v-bind:src="data.immagine_secondaria_evento" alt="Immagine secondaria dell'evento">
+        <!--Immagini secondarie-->
+        <div v-for="imm_sec in data.immagini_secondarie_evento">
+          <div id="BoxImmagine2">
+            <img id="Immagine2" v-bind:src="imm_sec" alt="Immagine secondaria dell'evento">
+          </div>
         </div>
+
         <br>
-        <a id="segnala" href="segnala.html">Segnala questo evento</a>
+
+        <!--Link per segnalare l'evento-->
+        <a id="segnala" :href="link_segnalazione">Segnala questo evento</a>
       </section>
 
       <!--Colonna destra-->
       <aside id="ColonnaDestra">
 
         <!--Box con prezzo e link biglietteria-->
-        <div id="BoxBiglietteria">
-          <h2 id="prezzo" v-if="data.prezzo_biglietti_evento[0] == 0 && data.prezzo_biglietti_evento.length == 1">Gratis</h2>
-          <h2 id="prezzo" v-else-if="data.prezzo_biglietti_evento[0] != 0 && data.prezzo_biglietti_evento.length == 1">{{data.prezzo_biglietti_evento[0]}} €</h2>
+        <div id="BoxBiglietteria" v-if="data.prezzo_biglietti_evento.length !== 0">
+          <!--Visualizzazione del prezzo-->
+          <h2 id="prezzo" v-if="data.prezzo_biglietti_evento[0] === 0 && data.prezzo_biglietti_evento.length === 1">Gratis</h2>
+          <h2 id="prezzo" v-else-if="data.prezzo_biglietti_evento[0] !== 0 && data.prezzo_biglietti_evento.length === 1">{{data.prezzo_biglietti_evento[0]}} €</h2>
           <h2 id="prezzo" v-else>{{data.prezzo_biglietti_evento[0]}} - {{data.prezzo_biglietti_evento[data.prezzo_biglietti_evento.length - 1]}} €</h2>
+
+          <!--Link alla biglietteria-->
           <div id="BottoneBiglietteria">
-            <a href="biglietteria.html">COMPRA ORA</a>
+            <a :href="link_biglietteria">COMPRA ORA</a>
           </div>
         </div>
 
@@ -206,18 +262,23 @@ export default {
           <ul role="menu">
             <li role="menuitem">
               <ul class="LinkDestra" role="menu">
+                <!--Bottone per il follow dell'evento-->
                 <li role="menuitem" v-if="id_u !== '0'"><a class="BottoneDestra" v-bind:id="seguito" @click="seguiEvento">Segui</a></li>
-                <li role="menuitem" class="chat_live"><a class="BottoneDestra" href="chat.html">Chat</a></li>
-                <li role="menuitem" class="chat_live"><a class="BottoneDestra" href="live.html">Live</a></li>
+                <!--Link alla chat dell'evento-->
+                <li role="menuitem" class="chat_live"><a class="BottoneDestra" :href="link_chat">Chat</a></li>
+                <!--Link alla live dell'evento-->
+                <li role="menuitem" class="chat_live"><a class="BottoneDestra" :href="link_live">Live</a></li>
               </ul>
             </li>
-            <li role="menuitem" id="BottoneRecensioni"><a class="BottoneDestra" href="recensioni.html">Recensioni</a></li>
-            <li role="menuitem" id="BottoneSondaggiPre"><a class="BottoneDestra" v-bind:href="data.link_sondaggio_pre_evento">Sondaggio pre-evento</a></li>
-            <li role="menuitem" id="BottoneSondaggiPost"><a class="BottoneDestra" v-bind:href="data.link_sondaggio_post_evento">Sondaggio post-evento</a></li>
+            <!--Link alle recensioni dell'evento-->
+            <li role="menuitem" id="BottoneRecensioni"><a class="BottoneDestra" :href="link_recensioni">Recensioni</a></li>
+            <!--Link ai sondaggi dell'evento-->
+            <li v-if="data.link_sondaggio_pre_evento" role="menuitem" id="BottoneSondaggiPre"><a class="BottoneDestra" v-bind:href="data.link_sondaggio_pre_evento">Sondaggio pre-evento</a></li>
+            <li v-if="data.link_sondaggio_post_evento" role="menuitem" id="BottoneSondaggiPost"><a class="BottoneDestra" v-bind:href="data.link_sondaggio_post_evento">Sondaggio post-evento</a></li>
           </ul>
         </nav>
 
-        <!--Box video-->
+        <!--Box del video-->
         <div id="videoPlayer"><!--QUI VA IL VIDEO--></div>
 
       </aside>
@@ -226,29 +287,31 @@ export default {
       <div id="torna_su">
         <a href="#header"><img id="freccia" role="button" src="@/images/freccia.jpg" alt="Clicca qui per tornare in cima alla pagina"></a>
       </div>
+
     </main>
     <!--Fine Main-->
+
     <!--Inizio Footer-->
     <footer>
-      <!--Link da raggruppare in 3 gruppi da 3-->
-      <!--Prima colonna-->
+      <!--Link in 3 gruppi da 3-->
       <nav class="footer-nav" role="navigation" aria-label="link footer">
+        <!--Prima colonna-->
         <ul class="prima_colonna" role="menu">
-          <li id="primo_link_footer" role="menuitem"><a href="home.html">Home Page</a></li>
-          <li role="menuitem"><a href="faq.html">FAQs</a></li>
-          <li role="menuitem"><a href="sponsor.html">Sponsorizzazioni</a></li>
+          <li id="primo_link_footer" role="menuitem"><a href="/home">Home Page</a></li>
+          <li role="menuitem"><a href="/faq">FAQs</a></li>
+          <li role="menuitem"><a href="/sponsorizzazioni">Sponsorizzazioni</a></li>
         </ul>
         <!--Seconda colonna-->
         <ul class="seconda_colonna" role="menu">
-          <li role="menuitem"><a href="user_sup.html">Supporto utente</a></li>
-          <li role="menuitem"><a href="tec_sup.html">Supporto tecnico</a></li>
-          <li role="menuitem"><a href="segnala.html">Segnala questo evento</a></li>
+          <li role="menuitem"><a href="/sup_utente">Supporto utente</a></li>
+          <li role="menuitem"><a href="/sup_tecnico">Supporto tecnico</a></li>
+          <li role="menuitem"><a :href="link_segnalazione">Segnala questo evento</a></li>
         </ul>
         <!--Terza colonna-->
         <ul class="terza_colonna" role="menu">
-          <li role="menuitem"><a href="privacy.html">Privacy</a></li>
-          <li role="menuitem"> <a href="cookies.html">Cookies</a></li>
-          <li role="menuitem"><a href="terms.html">Termini di utilizzo</a></li>
+          <li role="menuitem"><a href="/privacy">Privacy</a></li>
+          <li role="menuitem"> <a href="/cookies">Cookies</a></li>
+          <li role="menuitem"><a href="/terms">Termini di utilizzo</a></li>
         </ul>
       </nav>
     </footer>

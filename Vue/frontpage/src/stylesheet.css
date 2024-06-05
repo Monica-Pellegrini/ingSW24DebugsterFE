@@ -107,7 +107,7 @@ ul, li
     list-style: none;
 }
 
-a.BottoneHeader
+a.BottoneHeader, p.BottoneHeader
 {
     text-transform: capitalize;
     text-decoration: none;
@@ -173,6 +173,11 @@ ul.filtri a:hover, ul.itemlist a:hover
     color: #797575;
 }
 
+#Account {
+    margin-right: 0.5em;
+    text-transform: none;
+
+}
 /*formattazione del main*/
 main
 {
@@ -201,9 +206,8 @@ main
 
 #BoxImmagine2
 {
-    width: 36em;
-    height: 30em;
-    background-image: linear-gradient(to bottom, #e7dbf4 0%, #bbb9b7 100%);
+    width: auto;
+    height: auto;
     text-align: center;
     margin: 50px 0 0 0;
 }
@@ -211,7 +215,7 @@ main
 #Immagine2
 {
     background: transparent no-repeat;
-    height: 30em;
+    height: auto;
     max-width:36em;
 }
 
@@ -298,6 +302,7 @@ ul.LinkDestra a
 ul.LinkDestra li.chat_live {
     margin-left: 0.55em;
     margin-right: 0.06em;
+    margin-top: 0.7em;
 
 }
 
@@ -334,6 +339,7 @@ a.BottoneDestra
 #BottoneRecensioni
 {
     display: inline-block;
+    margin-top: 0.3em;
 }
 
 #BottoneRecensioni a
